@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase Test</title>
+	<meta charset="utf-8" />
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+</head>
+<body>
+    <pre id="object">
+        
+    </pre>
+    <script>
+        var config = {
+            apiKey: "AIzaSyChZYXRZQg9BBsd7to530mlFlPiM40nhFA",
+            authDomain: "test-cd8ce.firebaseapp.com",
+            databaseURL: "https://test-cd8ce.firebaseio.com",
+            storageBucket: "test-cd8ce.appspot.com",
+            messagingSenderId: "227637868594"
+        };
+        firebase.initializeApp(config);
+        const preObject = document.getElementById('object');
+        const dbRefObject = firebase.database().ref().child('key');
+        dbRefObject.on('value', function (snap) {
+            document.getElementById('object').innerHTML = JSON.stringify(snap.val());
+        });
+    </script>
+</body>
+</html>
